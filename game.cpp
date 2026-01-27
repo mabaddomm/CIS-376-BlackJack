@@ -65,14 +65,23 @@ void Game::computerTurn(Deck& deck){
     std::cout << "Its now the dealers turn" << std::endl;
     Card computerCardUp = deck[cardIndex];
     cardIndex++;
+    computerCards.push_back(computerCardUp);
     Card computerCardDown = deck[cardIndex];
     cardIndex++;
+    computerCards.push_back(computerCardDown);
     std::cout << "Heres one of the Computer Cards: " << computerCardUp << std::endl;
-
+    checkRound();
 }
 
 void Game::checkRound(){
-
+    std::cout << "In Total Heres all the Player Cards" << std::endl;
+    for (Card card: playerCards){
+        std::cout << card << "\n";
+    }
+    std::cout << "In Total Heres all the Computers Cards" << std::endl;
+    for (Card card: computerCards){
+        std::cout << card << "\n";
+    }
 }
 
 void Game::endOfGame(){
