@@ -1,27 +1,44 @@
 #include <iostream>
 #include "game.h"
 #include "deck.h"
+#include <random>
 
 Game::Game() { 
     int cardIndex = 2;
+    int playerMoney = 100;
+    int computerMoney = 100;
+    int finalbet;
+    int computerBet;
 }
 
 void Game::startGame(Deck& deck){
     std::cout << "Welcome To Jack Black" << std::endl;
 }
 
-//This Function Checks to see what bet you place before the game Fully Starts. 
-void Game::startOfRound(){
-    int playerMoney = 100;
+/*This Function Checks to see what bet you place before the game Fully Starts. 
+It also takes care of the dealers bet through random number generation I used the random generation we talked about in class 
+today*/
+
+void Game::placeBets(){
+    //This is all my logic for place a bet for the human player and checking to make sure they have enough money to make the bet
     int betMoney = 0;
     std::cout << "Your Current Amount of Money is " << playerMoney << "!!!\nPlease Enter how Much You Would Like To Bet:";
     std::cin >> betMoney;
     if(betMoney > playerMoney){
         std::cout << "This Bet is more than you have Please Enter an amount Less than" << playerMoney << std::endl;
-        startOfRound();
+        placeBets();
     } else {
         int finalBet = betMoney;
     }
+
+    //This random generator thing I used from the random generator that we talked about in class when showing us SDL3
+    std::cout << "The Dealer has the following amount of Money: " << computerMoney << std::endl;
+    std::random_device rd; 
+    std::mt19937 gen(rd()); 
+    std::uniform_int_distribution<> distrib(1, computerMoney);
+
+    int computerBet = distrib(gen);
+    std::cout << "The Dealer Places a bet of: $" << computerBet << std::endl;
 }
 
 void Game::playerTurn(Deck& deck){
@@ -30,7 +47,6 @@ void Game::playerTurn(Deck& deck){
     Card playerCardTwo = deck[1];
     playerCards.push_back(playerCardOne);
     playerCards.push_back(playerCardTwo);
-
     std::cout << playerCardOne << " " << playerCardTwo << std::endl;
 
     std::cout << "Its your turn!!! \nHow Much Would you Like To Bet?";

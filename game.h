@@ -15,13 +15,15 @@ class Game {
         int cardIndex = 2;
         std::vector<Card> playerCards;
         std::vector<Card> computerCards;
+        int playerMoney = 100;
+        int computerMoney = 100;
 
     public: 
         Game();
 
         void startGame(Deck& deck);
 
-        void startOfRound();
+        void placeBets();
 
         void playerTurn(Deck& deck);
 
