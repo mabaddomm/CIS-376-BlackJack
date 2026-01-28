@@ -10,6 +10,14 @@ Card::Card(Suit suit, int number){
 	this->number = number;
 }
 
+//the getters for the suit and number
+int Card::getNumber(){
+	return number;
+}
+Suit Card::getSuit(){
+	return suit;
+}
+
 // Create a new Deck by instantiating each Card.
 Deck::Deck(){
 	for(int i=0; i<4; ++i){

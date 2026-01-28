@@ -9,9 +9,11 @@ class Card;
 
 enum playerOptions {HIT, STAND, DOUBLEDOWN};
 
+
 class Game {
 
     private: 
+        //Deck deck;
         int cardIndex = 2;
         std::vector<Card> playerCards;
         std::vector<Card> computerCards;
@@ -26,6 +28,8 @@ class Game {
         void placeBets();
 
         void playerTurn(Deck& deck);
+
+        void comCards(Deck& deck);
 
         void computerTurn(Deck& deck);
 

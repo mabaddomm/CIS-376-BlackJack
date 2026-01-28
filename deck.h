@@ -49,7 +49,7 @@ class Card {
 		// needing the getters.  I'm going to make it a friend class so that
 		// it has access to my private information.
 		friend class Deck;
-
+	
 		// When you print something in C++, we send it to the standard output stream
 		// (std::cout).  Every type of data (ints, floats, strings, your own data types)
 		// must have an operator<< function that tells std::cout how to print that
