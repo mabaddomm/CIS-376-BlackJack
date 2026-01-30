@@ -6,7 +6,7 @@
 Game::Game(Deck& deck) : deck(deck) { 
     
 }
-
+//This is just a quick intro to the game made it easier for me to have a start like this when testing the game 
 void Game::startGame(){
     std::cout << "---------Welcome To Jack Black---------\n\n" << std::endl;
     Game::placeBets();
@@ -158,6 +158,7 @@ void Game::computerTurn(){
     Game::checkForBlackjack();
 }
 
+//This funciton helps summarize what cards you and the dealer have and ten gets the results for who won that round of the game 
 void Game::checkRound(){
     int playerCardSum = 0;
     int dealerCardSum = 0;
@@ -188,6 +189,7 @@ void Game::checkRound(){
     Game::endOfGame();
 }
 
+//This funciton is supposed to check if a jackblack is in one of the players hands. 
 void Game::checkForBlackjack(){
     bool phasBJ = false; 
     bool chasBJ = false ;
@@ -216,6 +218,7 @@ void Game::checkForBlackjack(){
     }
 }
 
+//This function helps give a summary of what happened to the game, and then  helps reset the values whether you choose to conintue the game, and then lets you choose to quit the game 
 void Game::endOfGame(){
     std::cout << "You now have $" << playerMoney << " | Dealer now has $" << computerMoney << std::endl;
     if (playerMoney <= 0 || computerMoney <= 0){
