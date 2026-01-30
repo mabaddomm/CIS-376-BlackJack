@@ -13,30 +13,34 @@ enum playerOptions {HIT, STAND, DOUBLEDOWN};
 class Game {
 
     private: 
-        //Deck deck;
+        Deck& deck;
         int cardIndex = 2;
         std::vector<Card> playerCards;
         std::vector<Card> computerCards;
         int playerMoney = 100;
         int computerMoney = 100;
+        int finalBet;
+        int computerBet;
+
 
     public: 
-        Game();
-
-        void startGame(Deck& deck);
-
+        Game(Deck& deck);
+        
+        void startGame();
+        
         void placeBets();
-
-        void playerTurn(Deck& deck);
-
-        void comCards(Deck& deck);
-
-        void computerTurn(Deck& deck);
-
+        
+        void playerTurn();
+        
+        void comCards();
+        
+        void computerTurn();
+        
         void checkRound();
 
         void endOfGame();  
 
+        void checkForBlackjack();
 
 };
 

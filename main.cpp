@@ -15,8 +15,6 @@ int main(int argc, char** argv){
 	}
 	std::cout << std::endl;
 
-	Game game;
-	game.startGame(deck);
-	game.placeBets();
-	game.playerTurn(deck);
+	Game game(deck);
+	game.startGame();
 }
