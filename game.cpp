@@ -73,10 +73,18 @@ void Game::playerTurn(){
         std::cout << "You Stand With Your Cards" << std::endl;
     } else if(playerMove == DOUBLEDOWN) {
         std::cout << "You double your bet, and get Another Card" << std::endl;
-        Card playerCardThree = deck[cardIndex];
-        cardIndex += 1;
-        std::cout << "Here is Your New Card: " << playerCardThree << std::endl;
-        playerCards.push_back(playerCardThree);
+        int doubleVertification;
+        doubleVertification = (finalBet * 2); 
+        if(doubleVertification < playerMoney) {
+            Card playerCardThree = deck[cardIndex];
+            cardIndex += 1;
+            finalBet += finalBet;
+            std::cout << "Here is Your New Card: " << playerCardThree << std::endl;
+            playerCards.push_back(playerCardThree);
+        } else {
+            std::cout << "You don't have enough money to Double Down Please choose a different option :/ \n\n" << std::endl;
+            Game::playerTurn(); 
+        }
     }
     //Checking to see if you "BUST" immediatly after your turn?
     int playerCardSum = 0;
@@ -170,7 +178,7 @@ void Game::checkRound(){
         std::cout << "The dealer has won this ROUND" << std::endl;
         playerMoney -= finalBet; 
         computerMoney += finalBet;
-    } else if (playerCardSum > dealerCardSum){
+    } else if (playerCardSum > dealerCardSum || dealerCardSum > 21){
         std::cout << "The player has won this ROUND" << std::endl;
         playerMoney += computerBet;
         computerMoney -= computerBet;
@@ -222,6 +230,13 @@ void Game::endOfGame(){
     std::cin >> playerAnswer; 
     if(playerAnswer == 1){
         std::cout << "YOU CHOOSE TO PLAY AGAIN DON'T LOSE YOUR MONEY \n\n";
+        //Resetting the Values: 
+        playerCards.clear();
+        computerCards.clear();
+        cardIndex = 2;
+        finalBet = 0;
+        computerBet = 0;
+        Deck::shuffle(deck);
         Game::startGame();
     } else if (playerAnswer == 2){
         std::cout << "YOU HAVE CHOOSEN TOO QUIT, WHATS BETTER THAN GAMBLING THOO!!!! :(   --bye bye\n\n";
